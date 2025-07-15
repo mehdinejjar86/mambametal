@@ -1,4 +1,4 @@
-# Mamba
+# Mamba For Metal Performance Shader
 
 ![Mamba](assets/selection.png "Selective State Space")
 > **Mamba: Linear-Time Sequence Modeling with Selective State Spaces**\

@@ -64,7 +64,7 @@ model = Mamba(
     d_state=16,  # SSM state expansion factor
     d_conv=4,    # Local convolution width
     expand=2,    # Block expansion factor
-).to("cuda")
+).to("mps")
 y = model(x)
 assert y.shape == x.shape
 ```
@@ -84,7 +84,7 @@ model = Mamba2(
     d_state=64,  # SSM state expansion factor, typically 64 or 128
     d_conv=4,    # Local convolution width
     expand=2,    # Block expansion factor
-).to("cuda")
+).to("mps")
 y = model(x)
 assert y.shape == x.shape
 ```

@@ -19,22 +19,21 @@ with an efficient hardware-aware design and implementation in the spirit of [Fla
 
 ## Installation
 
-- [Option] `pip install causal-conv1d>=1.4.0`: an efficient implementation of a simple causal Conv1d layer used inside the Mamba block.
-- `pip install mamba-ssm`: the core Mamba package.
-- `pip install mamba-ssm[causal-conv1d]`: To install core Mamba package and causal-conv1d.
-- `pip install mamba-ssm[dev]`: To install core Mamba package and dev depdencies.
+Start by installing pytorch (wroked with 2.7.1)
 
-It can also be built from source with `pip install .` from this repository.
+Install [Triton](https://github.com/triton-lang/triton/) from official repository.
+
+
+
+
+- [Option] `pip install causal-conv1d>=1.4.0`: an efficient implementation of a simple causal Conv1d layer used inside the Mamba block.
+
+Install from source with `pip install .` from this repository (ONLY for MPS). 
 
 Try passing `--no-build-isolation` to `pip` if installation encounters difficulties either when building from source or installing from PyPi. Common `pip` complaints that can be resolved in this way include PyTorch versions, but other cases exist as well.
 
 Other requirements:
-- Linux
-- NVIDIA GPU
-- PyTorch 1.12+
-- CUDA 11.6+
-
-For AMD cards, see additional prerequisites below.
+- Metal Performance Shader
 
 ## Usage
 
@@ -58,7 +57,7 @@ import torch
 from mamba_ssm import Mamba
 
 batch, length, dim = 2, 64, 16
-x = torch.randn(batch, length, dim).to("cuda")
+x = torch.randn(batch, length, dim).to("mps")
 model = Mamba(
     # This module uses roughly 3 * expand * d_model^2 parameters
     d_model=dim, # Model dimension d_model
